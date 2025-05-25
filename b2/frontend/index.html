@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casio Siêu Cấp VIP Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <h1 class="brand">CASIO</h1>
+            <div class="model">SUPER ULTRA VIP PRO</div>
+        </div>
+        
+        <div class="calculator-screen">
+            <div id="display" class="display">0</div>
+        </div>
+        
+        <form id="calculator-form" class="calculator-form">
+            <div class="input-group">
+                <label for="number1">Số thứ nhất:</label>
+                <input type="number" id="number1" class="input-number" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="operation">Phép toán:</label>
+                <select id="operation" class="operation-select">
+                    <option value="add">Cộng (+)</option>
+                    <option value="subtract">Trừ (-)</option>
+                    <option value="multiply">Nhân (×)</option>
+                    <option value="divide">Chia (÷)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="number2">Số thứ hai:</label>
+                <input type="number" id="number2" class="input-number" required>
+            </div>
+            
+            <button type="submit" class="calculate-btn">Tính toán</button>
+        </form>
+        
+        <div id="result" class="result-container">
+            <div class="result-label">Kết quả:</div>
+            <div id="result-value" class="result-value">-</div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
