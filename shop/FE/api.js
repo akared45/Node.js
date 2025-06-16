@@ -2,13 +2,13 @@ const API_BASE_URL = 'http://localhost:3000';
 
 async function fetchProducts() {
   const res = await fetch(`${API_BASE_URL}/products`);
-  if (!res.ok) throw new Error('Lỗi lấy sản phẩm');
+  if (!res.ok) throw new Error('Error retrieving product');
   return await res.json();
 }
 
 async function deleteProduct(id) {
   const res = await fetch(`${API_BASE_URL}/products/${id}`, { method: 'DELETE' });
-  if (!res.ok) throw new Error('Lỗi xóa sản phẩm');
+  if (!res.ok) throw new Error('Error deleting product');
 }
 
 async function createProduct(product) {
@@ -17,7 +17,7 @@ async function createProduct(product) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(product)
   });
-  if (!res.ok) throw new Error('Lỗi thêm sản phẩm');
+  if (!res.ok) throw new Error('Error adding product');
   return await res.text();
 }
 
@@ -27,7 +27,7 @@ async function updateProduct(id, product) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(product)
   });
-  if (!res.ok) throw new Error('Lỗi cập nhật sản phẩm');
+  if (!res.ok) throw new Error('Error updating product');
   return await res.text();
 }
 
