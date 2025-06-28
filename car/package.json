@@ -1,0 +1,17 @@
+{
+  "name": "car",
+  "version": "1.0.0",
+  "main": "src/presentation/api/index.js",
+  "scripts": {
+    "start": "node src/presentation/api/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "uuid": "^11.1.0"
+  }
+}
