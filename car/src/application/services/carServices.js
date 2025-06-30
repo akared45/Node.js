@@ -12,30 +12,30 @@ class CarService {
         this.deleteCarUseCase = new DeleteCar(carRepository);
     }
 
-    createCar(data) {
+    async createCar(data) {
         const carData = CarDTO.fromRequest(data);
-        const car = this.createCarUseCase.execute(carData);
-        return CarDTO.toResponse(car);
+        const car = await this.createCarUseCase.execute(carData);
+        return new CarDTO(car); 
     }
 
-    getCar(id) {
-        const car = this.getCarUseCase.execute(id);
-        return CarDTO.toResponse(car);
+    async getCar(id) {
+        const car = await this.getCarUseCase.execute(id);
+        return new CarDTO(car); 
     }
 
-    getAllCars() {
-        const cars = this.getCarUseCase.executeAll();
-        return cars.map(car => CarDTO.toResponse(car));
+    async getAllCars() {
+        const cars = await this.getCarUseCase.executeAll();
+        return cars.map(car => new CarDTO(car)); 
     }
 
-    updateCar(id, data) {
+    async updateCar(id, data) {
         const carData = CarDTO.fromRequest(data);
-        const updatedCar = this.updateCarUseCase.execute(id, carData);
-        return CarDTO.toResponse(updatedCar);
+        const updatedCar = await this.updateCarUseCase.execute(id, carData);
+        return new CarDTO(updatedCar); 
     }
 
-    deleteCar(id) {
-        return this.deleteCarUseCase.execute(id);
+    async deleteCar(id) {
+        return await this.deleteCarUseCase.execute(id);
     }
 }
 
