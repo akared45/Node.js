@@ -21,6 +21,12 @@ app.use('/videos', express.static(outputDir));
 app.get('/stream', (req, res) => {
     const outputPath = path.join(outputDir, 'output.m3u8');
 
+    if (fs.existsSync(outputPath)) {
+        console.log('HLS is ready');
+        return res.json({ url: '/videos/output.m3u8' });
+    }
+
+    console.log('Start.....');
     ffmpeg(videoPath)
         .outputOptions([
             '-hls_time 10',
@@ -28,8 +34,12 @@ app.get('/stream', (req, res) => {
             '-hls_segment_filename', path.join(outputDir, 'segment%d.ts')
         ])
         .output(outputPath)
+        .on('start', cmd => console.log('FFmpeg command:', cmd))
+        .on('progress', p => {
+            process.stdout.write(`${Math.floor(p.percent)}% done\r`);
+        })
         .on('end', () => {
-            console.log('Conversion completed');
+            console.log('\nConversion completed');
             res.json({ url: '/videos/output.m3u8' });
         })
         .on('error', (err) => {
