@@ -1,0 +1,2 @@
+[2025-07-07T15:16:05.909Z] INFO: Retrieved all products
+[2025-07-07T15:16:05.909Z] INFO: Retrieved all products via API
